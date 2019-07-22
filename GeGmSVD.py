@@ -30,7 +30,7 @@ Q,Qs,Qe = fncs.processMomList (momList)
 
 QsNum = len(Q)
 
-ratio_err = rw.readNthDataCol( ratio_err_filename, \2).reshape(ratioNum,\momNum).T   ???
+ratio_err = rw.readNthDataCol( ratio_err_filename, 2).reshape(ratioNum,\momNum).T   
 
 mEff = rw.readNthDataCol (mEff_filename, 1)
 
