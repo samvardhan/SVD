@@ -28,3 +28,30 @@ def detTimestepAndConfigNum(filename)
  assert timeStepNum = timeStepNum_last, \ "Err(detTimestepAndConfigNum): No. of timesteps not consistent across configurations"
  return timeStepNum, configNum
 		
+def readTxtFile (filename, columnNum, **kwargs)
+   with open(filename, "r") as txtFile:
+		lineNum= (txtFile.readlines())
+		txtFile.seek(0)
+		data = np.array(txtFile.read.split(), **kwargs).reshape(lineNum,columnNum)
+		
+ return data
+
+def readNthDataCol(filename , N)
+	data = []
+	with open(filename, "r") as file:
+		for line in file:
+			if line.split():
+				data.append(line.split())
+	data = np.array(data, dtype=float)
+ return data[..., N]
+
+			
+	
+	
+	
+	
+	
+	
+	
+	
+	
