@@ -35,8 +35,13 @@ ratio_err = rw.readNthDataCol( ratio_err_filename, 2).reshape(ratioNum,momNum).T
 mEff = rw.readNthDataCol (mEff_filename, 1)
 
 
-#calculating#
+#calculating kinematic factors#
 kinefactors= pq.kineFactor_GE_GM(ratio_err, mEff, momList, L)
+
 #SVD#
+u = np.zeros((binNum, QsqNum*ratioNum, 2))
+s = np.zeros((binNum, QsqNum, 2))
+vT= np.zeros((binNum, QsqNum, 2,2))
+
 
 
