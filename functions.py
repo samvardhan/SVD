@@ -8,8 +8,8 @@ def processMomList (momLists)
           
     momList = momLists[0]
     
-    else
-    momList = momLists
+  else
+  momList = momLists
     
 Qsq_s= []
 Qsq_e= []
