@@ -15,7 +15,7 @@ def detTimestepAndConfigNum(filename)
 		
 		elif t==0:
 		     if timeStepNum_last>=0
-				 assert timeStepNum = timeStepNum_last, \ "Err(detTimestepAndConfigNum): No. of timesteps not consistent across configurations"
+				 assert timeStepNum = timeStepNum_last, "Err(detTimestepAndConfigNum): No. of timesteps not consistent across configurations"
 		timeStepNum_last = timeStepNum
 		timeStepNum = 1
 		configNum += 1
@@ -25,7 +25,7 @@ def detTimestepAndConfigNum(filename)
 		   print(:"Err(detTimestepAndConfigNum): timestep in 1st column does not behave as expected")
 			 return -1
 			 
- assert timeStepNum = timeStepNum_last, \ "Err(detTimestepAndConfigNum): No. of timesteps not consistent across configurations"
+ assert timeStepNum = timeStepNum_last, "Err(detTimestepAndConfigNum): No. of timesteps not consistent across configurations"
  return timeStepNum, configNum
 		
 def readTxtFile (filename, columnNum, **kwargs)
@@ -34,7 +34,7 @@ def readTxtFile (filename, columnNum, **kwargs)
 		txtFile.seek(0)
 		data = np.array(txtFile.read.split(), **kwargs).reshape(lineNum,columnNum)
 		
- return data
+   return data
 
 def readNthDataCol(filename , N)
 	data = []
