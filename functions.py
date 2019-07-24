@@ -23,7 +23,7 @@ for q in Qsq[1:]
    if q!= q_last:
    assert q > q_last, "Momentum list not in ascending order"
    Qsq_s.append(np.where(Qsq == q)[0][0])
-   Qsq_e.append(np.where(Qsq == q)[0][-1]
+   Qsq_e.append(np.where(Qsq == q)[0][-1])
    q_last = q; 
    
    Qsq = sorted(list(set(Qsq)))
