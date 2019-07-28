@@ -20,7 +20,7 @@ momList_filename= args.momList_filename
 
 
 #reading#
-dummy, binNum= rw.detTimestepAndConfigNum( mEff_filename )
+binNum= rw.detConfigNum( mEff_filename )
 
 momList = rw.readTxtFile(momList_filename, dtype= int)
 
