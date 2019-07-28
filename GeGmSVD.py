@@ -26,9 +26,9 @@ momList = rw.readTxtFile(momList_filename, dtype= int)
 
 momNum= len(momList)
 
-Q,Qs,Qe = fncs.processMomList (momList)
+Qsq,Qsq_s,Qsq_e = fncs.processMomList (momList)
 
-QsqNum = len(Q)
+QsqNum = len(Qsq)
 
 ratio_err = rw.readNthDataCol( ratio_err_filename, 2).reshape(ratioNum,momNum).T   
 
