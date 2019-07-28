@@ -1,4 +1,4 @@
-def detTimestepAndConfigNum(filename) 
+def detConfigNum(filename) 
  with open(filename, "r") as file:
 		for line in file:
 			configNum = len(line.split())
