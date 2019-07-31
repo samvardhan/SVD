@@ -17,7 +17,8 @@ mEff_filename = args.effective_mass_filename
 
 momList_filename= args.momList_filename
 
-
+L= 64
+ratioNum= 10
 
 #reading#
 binNum= rw.detConfigNum( mEff_filename )
