@@ -40,9 +40,19 @@ mEff = rw.readNthDataCol (mEff_filename, 1)
 kinefactors= pq.kineFactor_GE_GM(ratio_err, mEff, momList, L)
 
 #SVD#
-u = np.zeros((binNum, QsqNum*ratioNum, 2))
-s = np.zeros((binNum, QsqNum, 2))
-vT= np.zeros((binNum, QsqNum, 2,2))
+inverse = [ [] for qsq in range(QsqNum)]
+
+for qsq in range(QsqNum):
+
+    kinefactor_qsq = kinefactor[ :, Qsq_s[qsq]:Qsq_e[qsq] + 1, ...]\
+                                                      .reshape[binNum, (Qsq_s[qsq]-Qsq_e[qsq]+1) * ratioNum, 2]
+    u, s, vT = np.linalg.svd[kinefactor_qsq, full_matrices =False]
+                                              
+    uT = np.transpose(u,(0,2,1))
+    v = np.transpose(vT,(0,2,1))
+    
+    temp_s= np.zeros((u.shape[-1],vT.shape[-2]))
+    
 
 
 
