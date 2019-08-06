@@ -1,13 +1,18 @@
-#parsing#
-parser = argparse.ArgumentParser(description= "Perform SVD")
+#Parsing#
+parser = argparse.ArgumentParser(description= "Singular Value Decomposition")
 
 parser.add_argument( "ratio_err_filename", action= 'store', type= str)
+#ratio_err_filename contain two columns- first column is label number(1,2,3...)#
+#the second column is the corresponding ratio error value)#
 
 parser.add_argument("mEff_filename", action= 'store', type= str)
+#contains the (three) effective mass values#
 
 parser.add_argument("momList_filename", action= 'store', type= str)
+#contains the permutations of momenta in 3D starting from 000#
 
 args= parser.parse_args()
+
 
 
 #assigning#
@@ -18,16 +23,20 @@ mEff_filename = args.effective_mass_filename
 momList_filename= args.momList_filename
 
 L= 64
+#L defines the number of lattice points#
+
 ratioNum= 10
 
+
 #reading#
-binNum= rw.detConfigNum( mEff_filename )
+binNum= rw.detbinNum( mEff_filename )
 
 momList = rw.readTxtFile(momList_filename, dtype= int)
 
 momNum= len(momList)
 
 Qsq,Qsq_s,Qsq_e = fncs.processMomList (momList)
+#Stores the Q-squared values (vector magnitude) in the momenta list values alongwith the indices of their starting and end points#
 
 QsqNum = len(Qsq)
 
