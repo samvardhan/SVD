@@ -1,4 +1,4 @@
-#Parsing#
+#PARSING#
 parser = argparse.ArgumentParser(description= "Singular Value Decomposition")
 
 parser.add_argument( "ratio_err_filename", action= 'store', type= str)
@@ -15,7 +15,7 @@ args= parser.parse_args()
 
 
 
-#assigning#
+#ASSIGNING#
 ratio_err_filename= args.ratio_err_filename
 
 mEff_filename = args.effective_mass_filename
@@ -30,20 +30,25 @@ ratioNum= 10
 
 #reading#
 binNum= rw.detbinNum( mEff_filename )
+#calculaitions are averaged over the number of effective masses provided, which is thus the bin size for jacknifing#
 
 momList = rw.readTxtFile(momList_filename, dtype= int)
-
+#stores momList as an array#
+#how many columns does momlist have?#
+#line 39 suggests only momList has one column, so does processMomlist function#
 momNum= len(momList)
 
 Qsq,Qsq_s,Qsq_e = fncs.processMomList (momList)
-#Stores the Q-squared values (vector magnitude) in the momenta list values alongwith the indices of their starting and end points#
+#groups each Q-squared value (vector magnitude) of the momenta list permutations alongwith the indices of its start and end points#
 
 QsqNum = len(Qsq)
 
-ratio_err = rw.readNthDataCol( ratio_err_filename, 2).reshape(ratioNum,momNum).T   
+ratio_err = rw.readNthDataCol(ratio_err_filename, 2).reshape(ratioNum,momNum).T   
+#??if the momNUm is the total list length,won't the reshaped array have only one row with a lot of columns (before T)??#
 
 mEff = rw.readNthDataCol (mEff_filename, 1)
-
+#why only one effective mass value?#
+#detbinNum function suggest m_eff file is a row of values#
 
 #calculating kinematic factors#
 kinefactors= pq.kineFactor_GE_GM(ratio_err, mEff, momList, L)
