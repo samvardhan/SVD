@@ -1,4 +1,4 @@
-def processMomList (momLists)
+def processMomList (momList)
 
 Qsq_s= []
 Qsq_e= []
