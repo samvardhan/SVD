@@ -1,10 +1,10 @@
-def detbinNum(filename) 
+def detbinNum(filename): 
  with open(filename, "r") as file:
 		for line in file:
 			binNum = len(line.split())
- return  binNum
+   return  binNum
 		
-def readTxtFile (filename, **kwargs)
+def readTxtFile (filename, **kwargs):
    with open(filename, "r") as txtFile:
 		columnNum = len(next(txtfile).split())
 		file.seek(0)
@@ -13,7 +13,7 @@ def readTxtFile (filename, **kwargs)
 		data = np.array(txtFile.read.split(), **kwargs).reshape(lineNum,columnNum)	
    return data
 
-def readNthDataCol(filename , N, **kwargs)
+def readNthDataCol(filename , N, **kwargs):
 	with open(filename, "r") as file:
 		columnNum = len(next(file).split())
 		file.seek(0)
