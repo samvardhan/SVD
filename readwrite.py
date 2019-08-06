@@ -1,17 +1,16 @@
-def detConfigNum(filename) 
+def detbinNum(filename) 
  with open(filename, "r") as file:
 		for line in file:
-			configNum = len(line.split())
- return  configNum
+			binNum = len(line.split())
+ return  binNum
 		
 def readTxtFile (filename, **kwargs)
    with open(filename, "r") as txtFile:
-		columnNum = len(next(file).split())
+		columnNum = len(next(txtfile).split())
 		file.seek(0)
 		lineNum= (txtFile.readlines())
 		txtFile.seek(0)
-		data = np.array(txtFile.read.split(), **kwargs).reshape(lineNum,columnNum)
-		
+		data = np.array(txtFile.read.split(), **kwargs).reshape(lineNum,columnNum)	
    return data
 
 def readNthDataCol(filename , N, **kwargs)
