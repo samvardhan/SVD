@@ -28,7 +28,8 @@ L= 64
 ratioNum= 10
 
 
-#reading#
+
+#READING#
 binNum= rw.detbinNum( mEff_filename )
 #calculaitions are averaged over the number of effective masses provided, which is thus the bin size for jacknifing#
 
@@ -53,11 +54,14 @@ mEff = rw.readNthDataCol (mEff_filename, 1)
 #calculating kinematic factors#
 kinefactors= pq.kineFactor_GE_GM(ratio_err, mEff, momList, L)
 
-#SVD#
+
+
+#PERFORM SVD(to calculate psedoinverse of kinefactor matrix)#
 inverse = [ [] for qsq in range(QsqNum)]
 
 for qsq in range(QsqNum):
-
+#svd done seperately for each q-squared value#
+#??why is the kinefactor matrix for each qsq value getting the same ratioNum to expand with???#
     kinefactor_qsq = kinefactor[ :, Qsq_s[qsq]:Qsq_e[qsq] + 1, ...]\
                                                       .reshape[binNum, (Qsq_s[qsq]-Qsq_e[qsq]+1) * ratioNum, 2]
     u, s, vT = np.linalg.svd[kinefactor_qsq, full_matrices =False]
