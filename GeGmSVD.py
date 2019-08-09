@@ -45,7 +45,6 @@ Qsq,Qsq_s,Qsq_e = fncs.processMomList (momList)
 QsqNum = len(Qsq)
 
 ratio_err = rw.readNthDataCol(ratio_err_filename, 2).reshape(ratioNum,momNum).T   
-#??if the momNUm is the total list length,won't the reshaped array have only one row with a lot of columns (before T)??#
 
 mEff = rw.readNthDataCol (mEff_filename, 1)
 #why only one effective mass value?#
