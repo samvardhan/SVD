@@ -1,3 +1,9 @@
+import argparse
+import readwrite as rw
+import functions as fncs
+import numpy as np
+import physQuants as pq
+
 #PARSING#
 parser = argparse.ArgumentParser(description= "Singular Value Decomposition")
 
@@ -35,8 +41,7 @@ binNum= rw.detbinNum( mEff_filename )
 
 momList = rw.readTxtFile(momList_filename, dtype= int)
 #stores momList as an array#
-#how many columns does momlist have?#
-#line 39 suggests only momList has one column, so does processMomlist function#
+
 momNum= len(momList)
 
 Qsq,Qsq_s,Qsq_e = fncs.processMomList (momList)
@@ -47,8 +52,6 @@ QsqNum = len(Qsq)
 ratio_err = rw.readNthDataCol(ratio_err_filename, 2).reshape(ratioNum,momNum).T   
 
 mEff = rw.readNthDataCol (mEff_filename, 1)
-#why only one effective mass value?#
-#detbinNum function suggest m_eff file is a row of values#
 
 #calculating kinematic factors#
 kinefactors= pq.kineFactor_GE_GM(ratio_err, mEff, momList, L)
@@ -78,3 +81,5 @@ for qsq in range(QsqNum):
     inv_mat = v @ s_mat_inv @ uT
      
     inverse[qsq] = np.average(inv_mat, axis=0).T
+                        
+rw.writeSVDOutputFile( output_filename, inverse, Qsq )
