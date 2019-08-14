@@ -23,7 +23,20 @@ def readNthDataCol(filename , N, **kwargs):
  return data[..., N]
 
 			
-	
+def writeSVDOutputFile( filename, data, Qsq ):
+
+    with open( filename, "w" ) as output:
+
+        for q in range( len( data ) ):
+
+            for r in range( data[ q ].shape[ 0 ] ):
+
+                output.write("{:<10}{:<10}{:<20.10}{:<.10}\n".format(r, \
+                                                                     Qsq[q], \
+                                                                     data[q][r,0], \
+                                                                     data[q][r,1]))
+
+    print( "Wrote " + filename )
 	
 	
 	
