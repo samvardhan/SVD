@@ -66,7 +66,7 @@ for qsq in range(QsqNum):
 #??why is the kinefactor matrix for each qsq value getting the same ratioNum to expand with???#
     kinefactor_qsq = kinefactor[ :, Qsq_s[qsq]:Qsq_e[qsq] + 1, ...]\
                                                       .reshape[binNum, (Qsq_s[qsq]-Qsq_e[qsq]+1) * ratioNum, 2]
-    u, s, vT = np.linalg.svd[kinefactor_qsq,full_matrices=False]
+    u, s, vT = np.linalg.svd(kinefactor_qsq,full_matrices=False)
                                               
     uT = np.transpose(u,(0,2,1))
     v = np.transpose(vT,(0,2,1))
