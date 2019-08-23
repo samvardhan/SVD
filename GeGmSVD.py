@@ -17,6 +17,9 @@ parser.add_argument("mEff_filename", action= 'store', type= str)
 parser.add_argument("momList_filename", action= 'store', type= str)
 #contains the permutations of momenta in 3D starting from 000#
 
+parser.add_argument( "-o", "--output_template", action='store', \
+                     type=str, default="./*.dat" )
+
 args= parser.parse_args()
 
 
