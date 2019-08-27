@@ -67,13 +67,12 @@ inverse = [ [] for qsq in range(QsqNum)]
 for qsq in range(QsqNum):
 #svd done seperately for each q-squared value#
 #??why is the kinefactor matrix for each qsq value getting the same ratioNum to expand with???#
-    kinefactor_qsq = kinefactor[ :, Qsq_s[qsq]:Qsq_e[qsq] + 1, ...]\
-                                                      .reshape(binNum, (Qsq_s[qsq]-Qsq_e[qsq]+1) * ratioNum, 2)
+    kinefactor_qsq = kinefactor[ :, Qsq_s[qsq]:Qsq_e[qsq] + 1, ...].reshape(binNum, (Qsq_s[qsq]-Qsq_e[qsq]+1) * ratioNum, 2)
     u, s, vT = np.linalg.svd(kinefactor_qsq,full_matrices=False)              
     uT = np.transpose(u,(0,2,1))
     v = np.transpose(vT,(0,2,1))
     s_mat= np.zeros((u.shape[-1],vT.shape[-2]))
-    s_mat_inv= np.zeros((binNum,) +  np.transpose(s[b]).shape    
+    s_mat_inv= np.zeros((binNum,) +  np.transpose(smat).shape    
     for b in range( binNum ):
         s_mat[:min(u.shape[-1],vT.shape[-2]),:min(u.shape[-1],vT.shape[-2])] = np.diag(s[b])
         s_mat_inv[b] = np.linalg.pinv[s_mat]
