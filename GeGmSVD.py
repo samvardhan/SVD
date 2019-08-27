@@ -75,7 +75,7 @@ for qsq in range(QsqNum):
     s_mat_inv= np.zeros((binNum,) +  np.transpose(s_mat).shape)    
     for b in range( binNum ):
         s_mat[:min(u.shape[-1],vT.shape[-2]),:min(u.shape[-1],vT.shape[-2])] = np.diag(s[b])
-        s_mat_inv[b] = np.linalg.pinv[s_mat]
+        s_mat_inv[b] = np.linalg.pinv(s_mat)
          
     inv_mat = v @ s_mat_inv @ uT
      
