@@ -1,8 +1,8 @@
 def detbinNum(filename): 
- with open(filename, "r") as file:
-		for line in file:
-			binNum = len(line.split())
-   return  binNum
+  with open(filename, "r") as file:
+  	for line in file:
+		binNum = len(line.split())
+  return  binNum
 		
 def readTxtFile (filename, **kwargs):
    with open(filename, "r") as txtFile:
@@ -20,7 +20,7 @@ def readNthDataCol(filename , N, **kwargs):
 		lineNum = (file.readlines())
 		file.seek(0)
 	        data = np.array(file.read.split(), **kwargs).reshape(lineNum, columnNum)
- return data[..., N]
+        return data[..., N]
 
 			
 def writeSVDOutputFile( filename, data, Qsq ):
