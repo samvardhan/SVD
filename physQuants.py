@@ -1,3 +1,5 @@
+import numpy as np 
+
 def KK(mEff, Qsq, L):
     return np.sqrt( 2* energy(mEff,Q,L) * (energy(mEff, Q,L)+ mEff))
 
@@ -23,7 +25,7 @@ def kineFactor(ratio_err, mEff, Q, L):
                                    [ 0, 2.0 * np.pi / L * Q[ q, 0 ] ], \
                                    [ 0, 2.0 * np.pi / L * Q[ q, 1 ] ], \
                                    [ 0, -2.0 * np.pi / L * Q[ q, 0 ] ] ] \
-                    / np.repeat[ ratio_err[q], 2).reshape(10,2) \
+                    / np.repeat(ratio_err[q], 2).reshape(10,2) \
                     / KK(mEff[b], Qsq, L)
    return kineFactor
 
