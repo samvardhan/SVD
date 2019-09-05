@@ -26,5 +26,5 @@ def kineFactor(ratio_err, mEff, Q, L):
                                    [ 0, -2.0 * np.pi / L * Q[ q, 0 ] ] ] \
                     / np.repeat[ ratio_err[q], 2).reshape(10,2) \
                     / KK(mEff[b], Qsq, L)
-return kineFactor
+   return kineFactor
 
