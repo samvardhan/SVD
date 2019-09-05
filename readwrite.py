@@ -9,7 +9,7 @@ def detbinNum(filename):
 def readTxtFile (filename, **kwargs):
 	with open(filename, "r") as txtFile:
 		columnNum = len(next(txtFile).split())
-		file.seek(0)
+		txtFile.seek(0)
 		lineNum= (txtFile.readlines())
 		txtFile.seek(0)
 		data = np.array(txtFile.read.split(), **kwargs).reshape(lineNum,columnNum)	
