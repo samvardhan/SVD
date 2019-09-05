@@ -27,7 +27,7 @@ args= parser.parse_args()
 #ASSIGNING#
 ratio_err_filename= args.ratio_err_filename
 
-mEff_filename = args.effective_mass_filename
+mEff_filename = args.mEff_filename
 
 momList_filename= args.momList_filename
 
