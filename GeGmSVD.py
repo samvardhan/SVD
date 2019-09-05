@@ -76,8 +76,7 @@ for qsq in range(QsqNum):
     for b in range( binNum ):
         s_mat[:min(u.shape[-1],vT.shape[-2]),:min(u.shape[-1],vT.shape[-2])] = np.diag(s[b])
         s_mat_inv[b] = np.linalg.pinv(s_mat)
-    #inv_mat = v@s_mat_inv@uT  
-    #inverse[qsq] = np.average(inv_mat, axis=0).T
-    inverse[qsq] = np.average(v, axis=0).T  #temporary
+    inv_mat = np.matmul(np.matmul(v,s_mat_inv),uT)  
+    inverse[qsq] = np.average(inv_mat, axis=0).T
 output_filename = output_template.replace( "*", "SVD_output" )                        
 rw.writeSVDOutputFile( output_filename, inverse, Qsq )
