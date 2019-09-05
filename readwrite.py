@@ -8,7 +8,7 @@ def detbinNum(filename):
 		
 def readTxtFile (filename, **kwargs):
 	with open(filename, "r") as txtFile:
-		columnNum = len(next(txtfile).split())
+		columnNum = len(next(txtFile).split())
 		file.seek(0)
 		lineNum= (txtFile.readlines())
 		txtFile.seek(0)
