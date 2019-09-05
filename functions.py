@@ -1,3 +1,4 @@
+import numpy as np 
 def processMomList (momList):
    Qsq_s= []
    Qsq_e= []
