@@ -1,7 +1,7 @@
 def detbinNum(filename):
 	with open(filename, "r") as file:
 			for line in file:
-		binNum = len(line.split()
+				binNum = len(line.split())
 return  binNum
 		
 def readTxtFile (filename, **kwargs):
