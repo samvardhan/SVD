@@ -1,6 +1,6 @@
 def detbinNum(filename):
 	with open(filename, "r") as file:
-		for line in file:
+			for line in file:
 		binNum = len(line.split()
 return  binNum
 		
@@ -33,10 +33,7 @@ def writeSVDOutputFile( filename, data, Qsq ):
                                                                      data[q][r,1]))
 	print( "Wrote " + filename )
 	
-	
-	
-	
-	
+
 	
 	
 	
