@@ -21,7 +21,7 @@ def readNthDataCol(filename , N, **kwargs):
 		file.seek(0)
 		lineNum = (file.readlines())
 		file.seek(0)
-	        data = np.array(file.read.split(), **kwargs).reshape(lineNum, columnNum)
+	        data = np.array(file.read().split(), **kwargs).reshape(lineNum, columnNum)
 	return data[..., N]
 
 			
