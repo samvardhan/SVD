@@ -12,7 +12,7 @@ def readTxtFile (filename, **kwargs):
 		txtFile.seek(0)
 		lineNum= (txtFile.readlines())
 		txtFile.seek(0)
-		data = np.array(txtFile.read.split(), **kwargs).reshape(lineNum,columnNum)	
+		data = np.array(txtFile.read().split(), **kwargs).reshape(lineNum,columnNum)	
 	return data
 
 def readNthDataCol(filename , N, **kwargs):
