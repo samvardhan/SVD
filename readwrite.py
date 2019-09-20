@@ -16,12 +16,12 @@ def readTxtFile (filename, **kwargs):
 	return data
 
 def readNthDataCol(filename , N, **kwargs):
-	with open(filename, "r") as file:
-		columnNum = len(next(file).split())
-		file.seek(0)
-		lineNum = len(file.readlines())
-		file.seek(0)
-	        data = np.array(file.read().split(), **kwargs).reshape(lineNum, columnNum)
+	with open(filename, "r") as datafile:
+		columnNum = len(next(datafile).split())
+		datafile.seek(0)
+		lineNum = len(datafile.readlines())
+		datafile.seek(0)
+	        data = np.array(datafile.read().split(), **kwargs).reshape(lineNum, columnNum)
 	return data[..., N]
 
 			
