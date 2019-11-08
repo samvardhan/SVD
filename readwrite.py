@@ -20,7 +20,7 @@ def readNthDataCol(filename , N, **kwargs):
 		columnNum = len(next(datafile).split())
 		datafile.seek(0)
 		lineNum = 0
-		for line in file:
+		for line in datafile:
 			if not line.strip():
 				lineNum+=1
 		datafile.seek(0)
