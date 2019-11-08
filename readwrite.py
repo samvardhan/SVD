@@ -20,7 +20,7 @@ def readNthDataCol(filename , N, **kwargs):
 		data = []
 		for line in datafile:
 			if line != '\n':
-				data.append( float(x) for x in line.split() )
+				data.append( line.split() )
 		data = np.array( data, dtype=float )
 	return data[..., N]
 
