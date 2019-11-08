@@ -19,10 +19,8 @@ def readNthDataCol(filename , N, **kwargs):
 	with open(filename, "r") as datafile:
 		columnNum = len(next(datafile).split())
 		datafile.seek(0)
-		lineNum = 0
-		for line in datafile:
-			if not line.strip():
-				lineNum+=1
+		
+		
 		datafile.seek(0)
 	        data = np.array(datafile.read().split(), **kwargs).reshape(lineNum, columnNum)
 	return data[..., N]
