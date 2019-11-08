@@ -18,11 +18,11 @@ def readTxtFile (filename, **kwargs):
 def readNthDataCol(filename , N, **kwargs):
 	with open(filename, "r") as datafile:
 		data = []
-		for line in datafile:
-			if line != '\n':
-				data.append( line.split() )
-		data = np.array( data, dtype=float )
-	return data[..., N]
+		lines= datafile.readlines()
+		for x in lines:
+			if x != '\n':
+				data.append(x.split()[N])
+	return data
 
 			
 def writeSVDOutputFile( filename, data, Qsq ):	
