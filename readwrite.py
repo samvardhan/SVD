@@ -22,9 +22,6 @@ def readNthDataCol(filename , N, **kwargs):
 			if line != '\n':
 				data.append( line.split() )
 		data = np.array( data, dtype=float )
-
-    return data[ ..., N ]
-	        data = np.array(datafile.read().split(), **kwargs).reshape(lineNum, columnNum)
 	return data[..., N]
 
 			
