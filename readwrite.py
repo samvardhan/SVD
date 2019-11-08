@@ -22,7 +22,7 @@ def readNthDataCol(filename , N, **kwargs):
 		lineNum = 0
 		for line in file:
 			if not line.strip():
-				lineNum++
+				lineNum+=1
 		datafile.seek(0)
 	        data = np.array(datafile.read().split(), **kwargs).reshape(lineNum, columnNum)
 	return data[..., N]
