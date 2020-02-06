@@ -2,8 +2,9 @@ import numpy as np
 
 def detbinNum(filename):
 	with open(filename, "r") as file:
-			for line in file:
-				binNum = len(line.split())
+                binNum=0
+                for line in file:
+                        binNum+=1
 	return  binNum
 		
 def readTxtFile (filename, **kwargs):
@@ -20,9 +21,9 @@ def readNthDataCol(filename , N, **kwargs):
 		data = []
 		lines= datafile.readlines()
 		for x in lines:
-			if x != '\n':
+			if x.split():
 				data.append(x.split()[N])
-	return data
+	return np.array(data,dtype=float)
 
 			
 def writeSVDOutputFile( filename, data, Qsq ):	

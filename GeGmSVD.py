@@ -42,7 +42,7 @@ ratioNum= 10
 binNum= rw.detbinNum( mEff_filename )
 #calculaitions are averaged over the number of effective masses provided, which is thus the bin size for jacknifing#
 
-momList = rw.readTxtFile(momList_filename, dtype= int)
+momList = rw.readTxtFile(momList_filename, dtype= float)
 #stores momList as an array#
 
 momNum= len(momList)
@@ -52,12 +52,11 @@ Qsq,Qsq_s,Qsq_e = fncs.processMomList (momList)
 
 QsqNum = len(Qsq)
 
-ratio_err = rw.readNthDataCol(ratio_err_filename, 2).reshape(ratioNum,momNum).T   
+ratio_err = rw.readNthDataCol(ratio_err_filename, 2).reshape(ratioNum,momNum).T
 
-mEff = rw.readNthDataCol (mEff_filename, 1)
-
+mEff = rw.readNthDataCol (mEff_filename, 0)
 #calculating kinematic factors#
-kinefactors= pq.kineFactor_GE_GM(ratio_err, mEff, momList, L)
+kinefactors= pq.kineFactor(ratio_err, mEff, momList, L)
 
 
 
@@ -67,7 +66,13 @@ inverse = [ [] for qsq in range(QsqNum)]
 for qsq in range(QsqNum):
 #svd done seperately for each q-squared value#
 #??why is the kinefactor matrix for each qsq value getting the same ratioNum to expand with???#
-    kinefactor_qsq = kinefactor[ :, Qsq_s[qsq]:Qsq_e[qsq] + 1, ...].reshape(binNum, (Qsq_s[qsq]-Qsq_e[qsq]+1) * ratioNum, 2)
+    
+    print (kinefactors[ :, Qsq_s[qsq]:Qsq_e[qsq] + 1, ...].shape)
+    print (binNum)
+    print ((Qsq_s[qsq]-Qsq_e[qsq]+1))
+    print (ratioNum)
+
+    kinefactor_qsq = kinefactors[ :, Qsq_s[qsq]:Qsq_e[qsq] + 1, ...].reshape(binNum, (Qsq_s[qsq]-Qsq_e[qsq]+1) * ratioNum, 2)
     u, s, vT = np.linalg.svd(kinefactor_qsq,full_matrices=False)              
     uT = np.transpose(u,(0,2,1))
     v = np.transpose(vT,(0,2,1))
@@ -76,7 +81,9 @@ for qsq in range(QsqNum):
     for b in range( binNum ):
         s_mat[:min(u.shape[-1],vT.shape[-2]),:min(u.shape[-1],vT.shape[-2])] = np.diag(s[b])
         s_mat_inv[b] = np.linalg.pinv(s_mat)
-    inv_mat = np.matmul(np.matmul(v,s_mat_inv),uT)  
+    inv_mat = np.matmul(np.matmul(v,s_mat_inv),uT)
+    print (inv_mat)
     inverse[qsq] = np.average(inv_mat, axis=0).T
-output_filename = output_template.replace( "*", "SVD_output" )                        
-rw.writeSVDOutputFile( output_filename, inverse, Qsq )
+    
+#output_filename = output_template.replace( "*", "SVD_output" )                        
+#rw.writeSVDOutputFile( output_filename, inverse, Qsq )

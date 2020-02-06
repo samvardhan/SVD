@@ -1,10 +1,10 @@
 import numpy as np 
 
-def KK(mEff, Qsq, L):
+def KK(mEff, Q, L):
     return np.sqrt( 2* energy(mEff,Q,L) * (energy(mEff, Q,L)+ mEff))
 
 def energy(mEff, Q, L):
-    return np.sqrt(mEff**2 + (2.0 *np.pi /L)**2 * Qsq)
+    return np.sqrt((mEff*mEff) + (2.0 *(np.pi /L))*(2.0 *(np.pi /L)) * Q)
 
 def kineFactor(ratio_err, mEff, Q, L):
    momNum = ratio_err.shape[0]
